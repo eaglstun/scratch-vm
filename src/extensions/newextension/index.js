@@ -2,7 +2,24 @@ const ArgumentType = require("../../extension-support/argument-type");
 const BlockType = require("../../extension-support/block-type");
 const Cast = require("../../util/cast");
 const log = require("../../util/log");
-const { objectGrep } = require("object-grep");
+
+class CoolThing {
+    static _instance = 0;
+
+    constructor() {
+        // this.instance = this._instance;
+        this.instance ++;
+        console.log("new cool thing ", this.instance);
+    }
+
+    static get instance() {
+        return this._instance || 0;
+    }
+
+    static set instance(v) {
+        this._instance = v;
+    }
+}
 
 class NewExtension {
     constructor(runtime) {
@@ -15,34 +32,57 @@ class NewExtension {
             name: "New Extension",
             blocks: [
                 {
-                    opcode: "writeLog",
+                    opcode: "debug",
                     blockType: BlockType.COMMAND,
-                    text: "log [TEXT]",
+                    text: "debug [a]",
                     arguments: {
-                        TEXT: {
+                        a: {
                             type: ArgumentType.STRING,
-                            defaultValue: "hello",
+                            // defaultValue: "hello",
                         },
                     },
                 },
                 {
-                    opcode: "sandwich",
-                    blockType: BlockType.COMMAND,
-                    text: "sando [MEAT] [CHEESE] [BREAD]",
+                    opcode: "hat",
+                    blockType: BlockType.HAT,
+                    text: "hat [a]",
+                },
+                {
+                    opcode: "newclass",
+                    blockType: BlockType.REPORTER,
+                    text: "newclass [a]",
+                },
+                {
+                    opcode: "reporter",
+                    blockType: BlockType.REPORTER,
+                    text: "reporter [a] ? [b] : [c]",
                     arguments: {
-                        MEAT: {
+                        a: {
                             type: ArgumentType.STRING,
-                            defaultValue: "ham",
+                            // defaultValue: "hello",
                         },
-
-                        CHEESE: {
+                        b: {
                             type: ArgumentType.STRING,
-                            defaultValue: "swiss",
+                            // defaultValue: "hello",
                         },
-
-                        BREAD: {
-                            // type: ArgumentType.STRING,
-                            defaultValue: ["rye"],
+                        c: {
+                            type: ArgumentType.STRING,
+                            // defaultValue: "hello",
+                        },
+                    },
+                },
+                {
+                    opcode: "conditional",
+                    blockType: BlockType.CONDITIONAL,
+                    text: "conditional [a] [b]",
+                    arguments: {
+                        a: {
+                            type: ArgumentType.STRING,
+                            // defaultValue: "hello",
+                        },
+                        b: {
+                            type: ArgumentType.STRING,
+                            // defaultValue: "hello",
                         },
                     },
                 },
@@ -51,23 +91,47 @@ class NewExtension {
         };
     }
 
-    sandwich(args, info, block) {
-        console.log("sandwich args!");
-        console.dir(args);
-        objectGrep(args, "bbb");
-
-        console.log("sandwich info!");
-        console.dir(info);
-        objectGrep(info, "bbb");
-
-        console.log("sandwich block!");
-        console.dir(block);
-        objectGrep(block, "bbb");
+    /**
+     *
+     * @param {*} args
+     * @param {*} info
+     * @param {*} block
+     * @return
+     */
+    debug(args, info, block) {
+        // console.log("debug args!");
+        console.log("DEBUG", args);
     }
 
-    writeLog(args) {
-        const text = Cast.toString(args.TEXT);
-        log.log(text);
+    hat(args, info, block) {
+        console.log("hat args!");
+        console.dir(args);
+    }
+
+    newclass(args, info, block) {
+        console.log("newclass args!");
+        console.dir(args);
+
+        const r = new CoolThing();
+        return JSON.stringify(r);
+    }
+
+    reporter(args, info, block) {
+        // console.log("reporter args!");
+        // console.dir(args);
+
+        return args.a ? args.b : args.c;
+    }
+
+    conditional(args, info, block) {
+        console.log("conditional args!");
+        console.dir(args);
+
+        // console.log("conditional info!");
+        // console.dir(info);
+
+        // console.log("conditional block!");
+        // console.dir(block);
     }
 }
 
