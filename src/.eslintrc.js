@@ -1,7 +1,12 @@
 module.exports = {
     root: true,
-    extends: ['scratch', 'scratch/es6'],
+    extends: [
+        // "eslint:recommended",
+        // "plugin:react/recommended",
+        'scratch', 
+        'scratch/es6'
+    ],
     env: {
-        browser: true
-    }
+        browser: true,
+    },
 };

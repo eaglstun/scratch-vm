@@ -27,7 +27,10 @@ const builtinExtensions = {
     // gdxfor: () => require('../extensions/scratch3_gdx_for'),
 
     //
-    newextension: () => require('../extensions/newextension')
+    newextension: () => require('../extensions/newextension'),
+
+     //
+     react: () => require('../extensions/react'),
 };
 
 /**
