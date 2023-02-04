@@ -217,7 +217,6 @@ test('Changing sprite info should emit a project changed event', t => {
     projectChanged = false;
 
     t.end();
-
 });
 
 test('Editing a vector costume should emit a project changed event', t => {

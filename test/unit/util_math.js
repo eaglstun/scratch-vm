@@ -52,9 +52,9 @@ test('reducedSortOrdering', t => {
 test('inclusiveRandIntWithout', t => {
     const withRandomValue = function (randValue, ...args) {
         const oldMathRandom = Math.random;
-        Object.assign(global.Math, {random: () => randValue});
+        Object.assign(global.Math, { random: () => randValue });
         const result = math.inclusiveRandIntWithout(...args);
-        Object.assign(global.Math, {random: oldMathRandom});
+        Object.assign(global.Math, { random: oldMathRandom });
         return result;
     };
 

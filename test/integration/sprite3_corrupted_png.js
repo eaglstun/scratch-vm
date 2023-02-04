@@ -13,9 +13,9 @@ const md5 = require('js-md5');
 const makeTestStorage = require('../fixtures/make-test-storage');
 const FakeRenderer = require('../fixtures/fake-renderer');
 const FakeBitmapAdapter = require('../fixtures/fake-bitmap-adapter');
-const {extractAsset, readFileToBuffer} = require('../fixtures/readProjectFile');
+const { extractAsset, readFileToBuffer } = require('../fixtures/readProjectFile');
 const VirtualMachine = require('../../src/index');
-const {serializeCostumes} = require('../../src/serialization/serialize-assets');
+const { serializeCostumes } = require('../../src/serialization/serialize-assets');
 
 const projectUri = path.resolve(__dirname, '../fixtures/default.sb3');
 const project = readFileToBuffer(projectUri);

@@ -122,7 +122,7 @@ test('replaceUnsafeChars should handle non strings', t => {
 
     // Objects shouldn't get provided to replaceUnsafeChars, but in the event
     // they do, it should just return the object (and log an error)
-    const object = {hello: 'world'};
+    const object = { hello: 'world' };
     t.equal(StringUtil.replaceUnsafeChars(object), object);
 
     t.end();

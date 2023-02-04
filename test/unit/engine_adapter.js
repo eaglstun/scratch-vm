@@ -10,7 +10,7 @@ test('spec', t => {
 test('invalid inputs', t => {
     let nothing = adapter('not an object');
     t.type(nothing, 'undefined');
-    nothing = adapter({noxmlproperty: true});
+    nothing = adapter({ noxmlproperty: true });
     t.type(nothing, 'undefined');
     t.end();
 });

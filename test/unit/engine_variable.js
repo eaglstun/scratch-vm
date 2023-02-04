@@ -60,18 +60,18 @@ test('toXML', t => {
     );
 
     const parser = new htmlparser.Parser({
-        onopentag: function (name, attribs){
-            if (name === 'variable'){
+        onopentag: function (name, attribs) {
+            if (name === 'variable') {
                 t.equal(attribs.type, Variable.SCALAR_TYPE);
                 t.equal(attribs.id, varId);
                 t.equal(attribs.iscloud, varIsCloud.toString());
                 t.equal(attribs.islocal, varIsLocal.toString());
             }
         },
-        ontext: function (text){
+        ontext: function (text) {
             t.equal(text, varName);
         }
-    }, {decodeEntities: false});
+    }, { decodeEntities: false });
     parser.write(v.toXML(false));
     parser.end();
 
@@ -91,18 +91,18 @@ test('escape variable name for XML', t => {
     );
 
     const parser = new htmlparser.Parser({
-        onopentag: function (name, attribs){
-            if (name === 'variable'){
+        onopentag: function (name, attribs) {
+            if (name === 'variable') {
                 t.equal(attribs.type, Variable.SCALAR_TYPE);
                 t.equal(attribs.id, varId);
                 t.equal(attribs.iscloud, varIsCloud.toString());
                 t.equal(attribs.islocal, varIsLocal.toString());
             }
         },
-        ontext: function (text){
+        ontext: function (text) {
             t.equal(text, '&lt;&gt;&amp;&apos;&quot;');
         }
-    }, {decodeEntities: false});
+    }, { decodeEntities: false });
     parser.write(v.toXML(false));
     parser.end();
 

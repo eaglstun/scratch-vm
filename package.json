@@ -71,6 +71,7 @@
     "@babel/preset-env": "7.14.8",
     "@commitlint/cli": "17.0.2",
     "@commitlint/config-conventional": "17.0.2",
+    "@types/web-bluetooth": "^0.0.16",
     "adm-zip": "0.4.11",
     "babel-eslint": "^10.1.0",
     "babel-loader": "8.2.2",
@@ -105,6 +106,7 @@
     "tap": "16.2.0",
     "tiny-worker": "2.3.0",
     "uglifyjs-webpack-plugin": "1.2.7",
+    "web-bluetooth": "^0.1.2",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.11.2"

@@ -19,7 +19,7 @@ test('getUsername returns empty string initially', t => {
 
 test('postData sets the username', t => {
     const userData = new UserData();
-    userData.postData({username: 'TEST'});
+    userData.postData({ username: 'TEST' });
     t.strictEquals(userData.getUsername(), 'TEST');
     t.end();
 });

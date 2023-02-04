@@ -29,7 +29,7 @@ const randomString = function () {
 };
 
 const generateBlock = function (id) {
-    const block = {fields: Object,
+    const block = { fields: Object,
         id: id,
         inputs: {},
         STEPS: Object,
@@ -37,7 +37,7 @@ const generateBlock = function (id) {
         name: 'fakeName',
         next: null,
         opcode: 'procedures_definition',
-        mutation: {proccode: 'fakeCode'},
+        mutation: { proccode: 'fakeCode' },
         parent: null,
         shadow: false,
         topLevel: true,
@@ -48,15 +48,15 @@ const generateBlock = function (id) {
 };
 
 const generateBlockInput = function (id, next, inp) {
-    const block = {fields: Object,
+    const block = { fields: Object,
         id: id,
-        inputs: {SUBSTACK: {block: inp, name: 'SUBSTACK'}},
+        inputs: { SUBSTACK: { block: inp, name: 'SUBSTACK' } },
         STEPS: Object,
         block: 'fakeBlock',
         name: 'fakeName',
         next: next,
         opcode: 'procedures_definition',
-        mutation: {proccode: 'fakeCode'},
+        mutation: { proccode: 'fakeCode' },
         parent: null,
         shadow: false,
         topLevel: true,

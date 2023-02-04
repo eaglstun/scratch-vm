@@ -24,7 +24,6 @@ tap.beforeEach(() => {
 const test = tap.test;
 
 test('saving and loading sb2 project with monitors preserves sliderMin and sliderMax', t => {
-
     vm.on('playgroundData', e /* eslint-disable-line no-unused-vars */ => {
         // TODO related to above TODO, comment these back in when we figure out
         // why running threads doesn't work with this test

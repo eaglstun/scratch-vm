@@ -37,7 +37,6 @@ test('default cat', t => {
     vm.setTurboMode(false);
     t.doesNotThrow(() => {
         vm.loadProject(project).then(() => {
-
             t.equal(vm.runtime.targets.length, 2); // stage and default sprite
 
             const defaultSprite = vm.runtime.targets[1];

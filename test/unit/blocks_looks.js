@@ -11,9 +11,9 @@ const util = {
         },
         sprite: {
             costumes: [
-                {name: 'first name'},
-                {name: 'second name'},
-                {name: 'third name'}
+                { name: 'first name' },
+                { name: 'second name' },
+                { name: 'third name' }
             ]
         },
         _customState: {},
@@ -45,15 +45,15 @@ const testCostume = (costumes, arg, currentCostume = 1, isStage = false) => {
     const sprite = new Sprite(null, rt);
     const target = new RenderedTarget(sprite, rt);
 
-    sprite.costumes = costumes.map(name => ({name: name}));
+    sprite.costumes = costumes.map(name => ({ name: name }));
     target.currentCostume = currentCostume - 1; // Convert to 0-indexed.
 
     if (isStage) {
         target.isStage = true;
         rt.addTarget(target);
-        looks.switchBackdrop({BACKDROP: arg}, {target});
+        looks.switchBackdrop({ BACKDROP: arg }, { target });
     } else {
-        looks.switchCostume({COSTUME: arg}, {target});
+        looks.switchCostume({ COSTUME: arg }, { target });
     }
 
     return target.currentCostume + 1; // Convert to 1-indexed.
@@ -167,7 +167,7 @@ test('switch backdrop block runs correctly', t => {
 
 test('getCostumeNumberName returns 1-indexed costume number', t => {
     util.target.currentCostume = 0; // This is 0-indexed.
-    const args = {NUMBER_NAME: 'number'};
+    const args = { NUMBER_NAME: 'number' };
     const number = blocks.getCostumeNumberName(args, util);
     t.strictEqual(number, 1);
     t.end();
@@ -175,7 +175,7 @@ test('getCostumeNumberName returns 1-indexed costume number', t => {
 
 test('getCostumeNumberName can return costume name', t => {
     util.target.currentCostume = 0; // This is 0-indexed.
-    const args = {NUMBER_NAME: 'name'};
+    const args = { NUMBER_NAME: 'name' };
     const name = blocks.getCostumeNumberName(args, util);
     t.strictEqual(name, 'first name');
     t.end();
@@ -183,7 +183,7 @@ test('getCostumeNumberName can return costume name', t => {
 
 test('getBackdropNumberName returns 1-indexed costume number', t => {
     util.target.currentCostume = 2; // This is 0-indexed.
-    const args = {NUMBER_NAME: 'number'};
+    const args = { NUMBER_NAME: 'number' };
     const number = blocks.getBackdropNumberName(args, util);
     t.strictEqual(number, 3);
     t.end();
@@ -191,7 +191,7 @@ test('getBackdropNumberName returns 1-indexed costume number', t => {
 
 test('getBackdropNumberName can return costume name', t => {
     util.target.currentCostume = 2; // This is 0-indexed.
-    const args = {NUMBER_NAME: 'name'};
+    const args = { NUMBER_NAME: 'name' };
     const number = blocks.getBackdropNumberName(args, util);
     t.strictEqual(number, 'third name');
     t.end();
@@ -209,24 +209,24 @@ test('numbers should be rounded properly in say/think', t => {
     });
 
     expectedSayString = '3.14';
-    looks.say({MESSAGE: 3.14159}, util, 'say bubble should round to 2 decimal places');
-    looks.think({MESSAGE: 3.14159}, util, 'think bubble should round to 2 decimal places');
+    looks.say({ MESSAGE: 3.14159 }, util, 'say bubble should round to 2 decimal places');
+    looks.think({ MESSAGE: 3.14159 }, util, 'think bubble should round to 2 decimal places');
 
     expectedSayString = '3';
-    looks.say({MESSAGE: 3}, util, 'say bubble should not add decimal places to integers');
-    looks.think({MESSAGE: 3}, util, 'think bubble should not add decimal places to integers');
+    looks.say({ MESSAGE: 3 }, util, 'say bubble should not add decimal places to integers');
+    looks.think({ MESSAGE: 3 }, util, 'think bubble should not add decimal places to integers');
 
     expectedSayString = '3.10';
-    looks.say({MESSAGE: 3.1}, util, 'say bubble should round to 2 decimal places, even if only 1 is needed');
-    looks.think({MESSAGE: 3.1}, util, 'think bubble should round to 2 decimal places, even if only 1 is needed');
+    looks.say({ MESSAGE: 3.1 }, util, 'say bubble should round to 2 decimal places, even if only 1 is needed');
+    looks.think({ MESSAGE: 3.1 }, util, 'think bubble should round to 2 decimal places, even if only 1 is needed');
 
     expectedSayString = '0.00125';
-    looks.say({MESSAGE: 0.00125}, util, 'say bubble should not round if it would display small numbers as 0');
-    looks.think({MESSAGE: 0.00125}, util, 'think bubble should not round if it would display small numbers as 0');
+    looks.say({ MESSAGE: 0.00125 }, util, 'say bubble should not round if it would display small numbers as 0');
+    looks.think({ MESSAGE: 0.00125 }, util, 'think bubble should not round if it would display small numbers as 0');
 
     expectedSayString = '1.99999';
-    looks.say({MESSAGE: '1.99999'}, util, 'say bubble should not round strings');
-    looks.think({MESSAGE: '1.99999'}, util, 'think bubble should not round strings');
+    looks.say({ MESSAGE: '1.99999' }, util, 'say bubble should not round strings');
+    looks.think({ MESSAGE: '1.99999' }, util, 'think bubble should not round strings');
 
     t.end();
 });
@@ -235,29 +235,29 @@ test('clamp graphic effects', t => {
     const rt = new Runtime();
     const looks = new Looks(rt);
     const expectedValues = {
-        brightness: {high: 100, low: -100},
-        ghost: {high: 100, low: 0},
-        color: {high: 500, low: -500},
-        fisheye: {high: 500, low: -500},
-        whirl: {high: 500, low: -500},
-        pixelate: {high: 500, low: -500},
-        mosaic: {high: 500, low: -500}
+        brightness: { high: 100, low: -100 },
+        ghost: { high: 100, low: 0 },
+        color: { high: 500, low: -500 },
+        fisheye: { high: 500, low: -500 },
+        whirl: { high: 500, low: -500 },
+        pixelate: { high: 500, low: -500 },
+        mosaic: { high: 500, low: -500 }
     };
     const args = [
-        {EFFECT: 'brightness', VALUE: 500, CLAMP: 'high'},
-        {EFFECT: 'brightness', VALUE: -500, CLAMP: 'low'},
-        {EFFECT: 'ghost', VALUE: 500, CLAMP: 'high'},
-        {EFFECT: 'ghost', VALUE: -500, CLAMP: 'low'},
-        {EFFECT: 'color', VALUE: 500, CLAMP: 'high'},
-        {EFFECT: 'color', VALUE: -500, CLAMP: 'low'},
-        {EFFECT: 'fisheye', VALUE: 500, CLAMP: 'high'},
-        {EFFECT: 'fisheye', VALUE: -500, CLAMP: 'low'},
-        {EFFECT: 'whirl', VALUE: 500, CLAMP: 'high'},
-        {EFFECT: 'whirl', VALUE: -500, CLAMP: 'low'},
-        {EFFECT: 'pixelate', VALUE: 500, CLAMP: 'high'},
-        {EFFECT: 'pixelate', VALUE: -500, CLAMP: 'low'},
-        {EFFECT: 'mosaic', VALUE: 500, CLAMP: 'high'},
-        {EFFECT: 'mosaic', VALUE: -500, CLAMP: 'low'}
+        { EFFECT: 'brightness', VALUE: 500, CLAMP: 'high' },
+        { EFFECT: 'brightness', VALUE: -500, CLAMP: 'low' },
+        { EFFECT: 'ghost', VALUE: 500, CLAMP: 'high' },
+        { EFFECT: 'ghost', VALUE: -500, CLAMP: 'low' },
+        { EFFECT: 'color', VALUE: 500, CLAMP: 'high' },
+        { EFFECT: 'color', VALUE: -500, CLAMP: 'low' },
+        { EFFECT: 'fisheye', VALUE: 500, CLAMP: 'high' },
+        { EFFECT: 'fisheye', VALUE: -500, CLAMP: 'low' },
+        { EFFECT: 'whirl', VALUE: 500, CLAMP: 'high' },
+        { EFFECT: 'whirl', VALUE: -500, CLAMP: 'low' },
+        { EFFECT: 'pixelate', VALUE: 500, CLAMP: 'high' },
+        { EFFECT: 'pixelate', VALUE: -500, CLAMP: 'low' },
+        { EFFECT: 'mosaic', VALUE: 500, CLAMP: 'high' },
+        { EFFECT: 'mosaic', VALUE: -500, CLAMP: 'low' }
     ];
 
     util.target.setEffect = function (effectName, actualValue) {

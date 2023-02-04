@@ -4,7 +4,7 @@ const readFileToBuffer = require('../fixtures/readProjectFile').readFileToBuffer
 const VirtualMachine = require('../../src/virtual-machine');
 const Runtime = require('../../src/engine/runtime');
 const MonitorRecord = require('../../src/engine/monitor-record');
-const {Map} = require('immutable');
+const { Map } = require('immutable');
 
 const test = tap.test;
 
@@ -48,7 +48,7 @@ test('monitorStateEquals', t => {
 test('monitorStateDoesNotEqual', t => {
     const r = new Runtime();
     const id = 'xklj4#!';
-    const params = {seven: 7};
+    const params = { seven: 7 };
     const prevMonitorState = MonitorRecord({
         id,
         opcode: 'turtle whereabouts',
@@ -180,7 +180,6 @@ test('Cloud variable limit allows only 10 cloud variables', t => {
     t.equal(rt.canAddCloudVariable(), false);
 
     t.end();
-
 });
 
 test('Starting the runtime emits an event', t => {

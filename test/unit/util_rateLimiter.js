@@ -8,7 +8,7 @@ test('rate limiter', t => {
 
     // Simulate time passing with a stubbed timer
     let simulatedTime = Date.now();
-    limiter._timer = {timeElapsed: () => simulatedTime};
+    limiter._timer = { timeElapsed: () => simulatedTime };
 
     // The rate limiter starts with a number of tokens equal to the max rate
     t.equal(limiter._count, rate);

@@ -16,9 +16,9 @@ test('Coordinates have limited precision', t => {
     const motion = new Motion(rt);
     const sprite = new Sprite(null, rt);
     const target = new RenderedTarget(sprite, rt);
-    const util = {target};
+    const util = { target };
 
-    motion.goToXY({X: 0.999999999, Y: 0.999999999}, util);
+    motion.goToXY({ X: 0.999999999, Y: 0.999999999 }, util);
 
     t.equals(motion.getX({}, util), 1);
     t.equals(motion.getY({}, util), 1);

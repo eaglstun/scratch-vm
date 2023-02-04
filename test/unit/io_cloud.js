@@ -59,10 +59,10 @@ test('postData update message updates the variable', t => {
 
     const cloud = new Cloud(runtime);
     cloud.setStage(stage);
-    cloud.postData({varUpdate: {
+    cloud.postData({ varUpdate: {
         name: 'foo',
         value: 3
-    }});
+    } });
     t.strictEquals(fooVar.value, 3);
     t.end();
 });

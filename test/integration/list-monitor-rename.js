@@ -16,9 +16,9 @@ test('importing sb3 project with incorrect list monitor name', t => {
         const stage = vm.runtime.targets[0];
         const cat = vm.runtime.targets[1];
 
-        for (const {target, renamedListName} of [
-            {target: stage, renamedListName: 'renamed global'},
-            {target: cat, renamedListName: 'renamed local'}
+        for (const { target, renamedListName } of [
+            { target: stage, renamedListName: 'renamed global' },
+            { target: cat, renamedListName: 'renamed local' }
         ]) {
             const listId = Object.keys(target.variables).find(k => target.variables[k].name === renamedListName);
 

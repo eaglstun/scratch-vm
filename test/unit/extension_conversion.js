@@ -311,7 +311,6 @@ test('custom field types should be added to block and EXTENSION_FIELD_ADDED call
             const regex = new RegExp(`<field name="field_${categoryInfo.id}_${argument.type}">`);
             t.true(regex.test(blockInfo.xml));
         });
-
     });
 
     let fieldAddedCallbacks = 0;

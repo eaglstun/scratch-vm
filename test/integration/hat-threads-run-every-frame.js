@@ -93,7 +93,7 @@ test('edge activated hat thread runs after being added to previously executed ta
             // Add a second hat that should create a second thread
             const hatBlock = threads[0].target.blocks.getBlock(threads[0].topBlock);
             threads[0].target.blocks.createBlock(Object.assign(
-                {}, hatBlock, {id: 'hatblock2', next: null}
+                {}, hatBlock, { id: 'hatblock2', next: null }
             ));
 
             // Check that the hat thread is added again when another step is taken
@@ -156,7 +156,6 @@ test('edge activated hat thread not added twice', t => {
  * runtime's _edgeActivatedHatValues map.
  */
 test('edge activated hat should trigger for both sprites when sprite is duplicated', t => {
-
     // Project that is similar to timer-greater-than-hat.sb2, but has code on the sprite so that
     // the sprite can be duplicated
     const projectWithSpriteUri = path.resolve(__dirname, '../fixtures/edge-triggered-hat.sb3');
@@ -193,7 +192,6 @@ test('edge activated hat should trigger for both sprites when sprite is duplicat
                 t.equal(numTargetEdgeHats, 2);
                 t.end();
             });
-
         });
     });
 });
@@ -203,7 +201,6 @@ test('edge activated hat should trigger for both sprites when sprite is duplicat
  * runtime's _edgeActivatedHatValues map.
  */
 test('edge activated hat should trigger for both sprites when sprite is cloned', t => {
-
     // Project that is similar to loudness-hat-block.sb2, but has code on the sprite so that
     // the sprite can be duplicated
     const projectWithSpriteUri = path.resolve(__dirname, '../fixtures/edge-triggered-hat.sb3');
@@ -276,7 +273,7 @@ test('edge activated hat thread does not interrupt stack click thread', t => {
             t.assert(doneThreads[0].status === Thread.STATUS_DONE);
 
             // Add stack click thread on this hat
-            vm.runtime.toggleScript(doneThreads[0].topBlock, {stackClick: true});
+            vm.runtime.toggleScript(doneThreads[0].topBlock, { stackClick: true });
 
             // Check that the hat thread is added again when another step is taken
             vm.runtime._step();
@@ -330,7 +327,7 @@ test('edge activated hat thread does not interrupt stack click thread', t => {
             vm.runtime.currentStepTime = Runtime.THREAD_STEP_INTERVAL;
 
             // Add stack click thread on this hat
-            vm.runtime.toggleScript(vm.runtime.threads[0].topBlock, {stackClick: true});
+            vm.runtime.toggleScript(vm.runtime.threads[0].topBlock, { stackClick: true });
 
             // Check that the hat thread is added again when another step is taken
             vm.runtime._step();

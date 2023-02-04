@@ -65,7 +65,7 @@ FakeRenderer.prototype.isTouchingColor = function (d, c) { // eslint-disable-lin
 };
 
 FakeRenderer.prototype.getBounds = function (d) { // eslint-disable-line no-unused-vars
-    return {left: this.x, right: this.x, top: this.y, bottom: this.y};
+    return { left: this.x, right: this.x, top: this.y, bottom: this.y };
 };
 
 FakeRenderer.prototype.setDrawableOrder = function (d, a, optG, optA, optB) { // eslint-disable-line no-unused-vars

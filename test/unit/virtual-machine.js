@@ -14,7 +14,7 @@ test('deleteSound returns function after deleting or null if nothing was deleted
     const vm = new VirtualMachine();
     const rt = new Runtime();
     const sprite = new Sprite(null, rt);
-    sprite.sounds = [{id: 1}, {id: 2}, {id: 3}];
+    sprite.sounds = [{ id: 1 }, { id: 2 }, { id: 3 }];
     const target = new RenderedTarget(sprite, rt);
     vm.editingTarget = target;
 
@@ -37,7 +37,7 @@ test('deleteCostume returns function after deleting or null if nothing was delet
     const vm = new VirtualMachine();
     const rt = new Runtime();
     const sprite = new Sprite(null, rt);
-    sprite.costumes = [{id: 1}, {id: 2}, {id: 3}];
+    sprite.costumes = [{ id: 1 }, { id: 2 }, { id: 3 }];
     sprite.currentCostume = 0;
     const target = new RenderedTarget(sprite, rt);
     vm.editingTarget = target;
@@ -107,7 +107,7 @@ test('renameSprite throws when there is no sprite for given target', t => {
 test('renameSprite sets the sprite name', t => {
     const vm = new VirtualMachine();
     const fakeTarget = {
-        sprite: {name: 'original'},
+        sprite: { name: 'original' },
         isSprite: () => true
     };
     vm.runtime.getTargetById = () => (fakeTarget);
@@ -119,7 +119,7 @@ test('renameSprite sets the sprite name', t => {
 test('renameSprite does not set sprite names to an empty string', t => {
     const vm = new VirtualMachine();
     const fakeTarget = {
-        sprite: {name: 'original'},
+        sprite: { name: 'original' },
         isSprite: () => true
     };
     vm.runtime.getTargetById = () => (fakeTarget);
@@ -131,7 +131,7 @@ test('renameSprite does not set sprite names to an empty string', t => {
 test('renameSprite does not set sprite names to reserved names', t => {
     const vm = new VirtualMachine();
     const fakeTarget = {
-        sprite: {name: 'original'},
+        sprite: { name: 'original' },
         isSprite: () => true
     };
     vm.runtime.getTargetById = () => (fakeTarget);
@@ -338,7 +338,6 @@ test('duplicateSprite duplicates a sprite when given id is associated with known
         t.equal(vm.runtime.targets.length, 2);
         t.end();
     });
-
 });
 
 test('duplicateSprite assigns duplicated sprite a fresh name', t => {
@@ -358,7 +357,6 @@ test('duplicateSprite assigns duplicated sprite a fresh name', t => {
         t.equal(vm.runtime.targets[1].sprite.name, 'sprite2');
         t.end();
     });
-
 });
 
 test('reorderCostume', t => {
@@ -428,13 +426,13 @@ test('shareCostumeToTarget', t => {
     const spr1 = new Sprite(null, vm.runtime);
     spr1.name = 'foo';
     const target1 = spr1.createClone();
-    const costume1 = {name: 'costume1'};
+    const costume1 = { name: 'costume1' };
     target1.addCostume(costume1);
 
     const spr2 = new Sprite(null, vm.runtime);
     spr2.name = 'foo';
     const target2 = spr2.createClone();
-    const costume2 = {name: 'another costume'};
+    const costume2 = { name: 'another costume' };
     target2.addCostume(costume2);
 
     vm.runtime.targets = [target1, target2];
@@ -453,13 +451,13 @@ test('shareSoundToTarget', t => {
     const spr1 = new Sprite(null, vm.runtime);
     spr1.name = 'foo';
     const target1 = spr1.createClone();
-    const sound1 = {name: 'sound1'};
+    const sound1 = { name: 'sound1' };
     target1.addSound(sound1);
 
     const spr2 = new Sprite(null, vm.runtime);
     spr2.name = 'foo';
     const target2 = spr2.createClone();
-    const sound2 = {name: 'another sound'};
+    const sound2 = { name: 'another sound' };
     target2.addSound(sound2);
 
     vm.runtime.targets = [target1, target2];
@@ -505,7 +503,6 @@ test('emitWorkspaceUpdate', t => {
                 const comment = comments[commentId];
                 blockString += `A Block Comment: ${comment.toXML()}`;
             }
-
         }
         return blockString;
     };
@@ -626,7 +623,7 @@ test('select original after dragging clone', t => {
     vm.runtime.targets = [
         {
             id: 'sprite1_clone',
-            sprite: {clones: [{id: 'sprite1_original'}]},
+            sprite: { clones: [{ id: 'sprite1_original' }] },
             stopDrag: () => {}
         }, {
             id: 'sprite2',
@@ -777,7 +774,6 @@ test('shareBlocksToTarget shares global variables without any name changes', t =
 
     // Share the block to the stage
     vm.shareBlocksToTarget([target.blocks.getBlock('a block')], stage.id, target.id).then(() => {
-
         // Verify that the block now exists on the target as well as the stage
         t.type(target.blocks.getBlock('a block'), 'object');
         t.type(target.blocks.getBlock('a block').fields, 'object');
@@ -956,8 +952,8 @@ test('shareBlocksToTarget loads extensions that have not yet been loaded', t => 
     runtime.targets = [stage];
 
     const fakeBlocks = [
-        {opcode: 'loaded_fakeblock'},
-        {opcode: 'notloaded_fakeblock'}
+        { opcode: 'loaded_fakeblock' },
+        { opcode: 'notloaded_fakeblock' }
     ];
 
     // Stub the extension manager

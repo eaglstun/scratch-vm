@@ -124,7 +124,7 @@ test('goToNextBlock', t => {
     const r = new Runtime();
     const s = new Sprite(null, r);
     const rt = new RenderedTarget(s, r);
-    const block1 = {fields: Object,
+    const block1 = { fields: Object,
         id: 'arbitraryString',
         inputs: Object,
         STEPS: Object,
@@ -138,7 +138,7 @@ test('goToNextBlock', t => {
         x: 0,
         y: 0
     };
-    const block2 = {fields: Object,
+    const block2 = { fields: Object,
         id: 'secondString',
         inputs: Object,
         STEPS: Object,
@@ -146,7 +146,7 @@ test('goToNextBlock', t => {
         name: 'STEPS',
         next: null,
         opcode: 'procedures_call',
-        mutation: {proccode: 'fakeCode'},
+        mutation: { proccode: 'fakeCode' },
         parent: null,
         shadow: false,
         topLevel: true,
@@ -180,7 +180,7 @@ test('stopThisScript', t => {
     const r = new Runtime();
     const s = new Sprite(null, r);
     const rt = new RenderedTarget(s, r);
-    const block1 = {fields: Object,
+    const block1 = { fields: Object,
         id: 'arbitraryString',
         inputs: Object,
         STEPS: Object,
@@ -194,7 +194,7 @@ test('stopThisScript', t => {
         x: 0,
         y: 0
     };
-    const block2 = {fields: Object,
+    const block2 = { fields: Object,
         id: 'secondString',
         inputs: Object,
         STEPS: Object,
@@ -202,7 +202,7 @@ test('stopThisScript', t => {
         name: 'STEPS',
         next: null,
         opcode: 'procedures_call',
-        mutation: {proccode: 'fakeCode'},
+        mutation: { proccode: 'fakeCode' },
         parent: null,
         shadow: false,
         topLevel: true,
@@ -233,7 +233,7 @@ test('isRecursiveCall', t => {
     const r = new Runtime();
     const s = new Sprite(null, r);
     const rt = new RenderedTarget(s, r);
-    const block1 = {fields: Object,
+    const block1 = { fields: Object,
         id: 'arbitraryString',
         inputs: Object,
         STEPS: Object,
@@ -247,7 +247,7 @@ test('isRecursiveCall', t => {
         x: 0,
         y: 0
     };
-    const block2 = {fields: Object,
+    const block2 = { fields: Object,
         id: 'secondString',
         inputs: Object,
         STEPS: Object,
@@ -255,7 +255,7 @@ test('isRecursiveCall', t => {
         name: 'STEPS',
         next: null,
         opcode: 'procedures_call',
-        mutation: {proccode: 'fakeCode'},
+        mutation: { proccode: 'fakeCode' },
         parent: null,
         shadow: false,
         topLevel: true,

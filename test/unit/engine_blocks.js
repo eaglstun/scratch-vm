@@ -87,7 +87,6 @@ test('getScripts', t => {
     t.ok(scripts.indexOf('foo2') > -1);
     t.equals(scripts.indexOf('foo3'), -1);
     t.end();
-
 });
 
 test('getNextBlock', t => {

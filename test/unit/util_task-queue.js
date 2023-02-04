@@ -39,9 +39,9 @@ test('spec', t => {
 test('constructor', t => {
     t.ok(new TaskQueue(1, 1));
     t.ok(new TaskQueue(1, 1, {}));
-    t.ok(new TaskQueue(1, 1, {startingTokens: 0}));
-    t.ok(new TaskQueue(1, 1, {maxTotalCost: 999}));
-    t.ok(new TaskQueue(1, 1, {startingTokens: 0, maxTotalCost: 999}));
+    t.ok(new TaskQueue(1, 1, { startingTokens: 0 }));
+    t.ok(new TaskQueue(1, 1, { maxTotalCost: 999 }));
+    t.ok(new TaskQueue(1, 1, { startingTokens: 0, maxTotalCost: 999 }));
     t.end();
 });
 

@@ -49,7 +49,6 @@ tap.beforeEach(() => {
 
         // Reset project changes from new blocks
         projectChanged = false;
-
     });
 });
 

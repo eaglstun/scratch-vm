@@ -11,9 +11,9 @@ const tap = require('tap');
 const md5 = require('js-md5');
 const makeTestStorage = require('../fixtures/make-test-storage');
 const FakeRenderer = require('../fixtures/fake-renderer');
-const {extractAsset, readFileToBuffer} = require('../fixtures/readProjectFile');
+const { extractAsset, readFileToBuffer } = require('../fixtures/readProjectFile');
 const VirtualMachine = require('../../src/index');
-const {serializeCostumes} = require('../../src/serialization/serialize-assets');
+const { serializeCostumes } = require('../../src/serialization/serialize-assets');
 
 const projectUri = path.resolve(__dirname, '../fixtures/corrupt_svg.sb3');
 const project = readFileToBuffer(projectUri);

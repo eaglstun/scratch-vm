@@ -1,10 +1,10 @@
-const {createReadStream} = require('fs');
-const {join} = require('path');
+const { createReadStream } = require('fs');
+const { join } = require('path');
 
-const {PNG} = require('pngjs');
-const {test} = require('tap');
+const { PNG } = require('pngjs');
+const { test } = require('tap');
 
-const {wrapClamp} = require('../../src/util/math-util');
+const { wrapClamp } = require('../../src/util/math-util');
 
 const VideoSensing = require('../../src/extensions/scratch3_video_sensing/index.js');
 const VideoMotion = require('../../src/extensions/scratch3_video_sensing/library.js');
@@ -251,7 +251,7 @@ test('detect motionDirection between frames', t => {
             // Add both frames of a pair and check if the motionDirection is near the
             // expected angle.
             let index = 0;
-            for (const {frames: [frame1, frame2], direction} of framePairs) {
+            for (const { frames: [frame1, frame2], direction } of framePairs) {
                 detect.addFrame(frame1);
                 detect.addFrame(frame2);
 
@@ -308,7 +308,7 @@ test('detect local motionDirection between frames', t => {
             // Add both frames of a pair and check if the local motionDirection is near
             // the expected angle.
             let index = 0;
-            for (const {frames: [frame1, frame2], direction} of framePairs) {
+            for (const { frames: [frame1, frame2], direction } of framePairs) {
                 detect.addFrame(frame1);
                 detect.addFrame(frame2);
 

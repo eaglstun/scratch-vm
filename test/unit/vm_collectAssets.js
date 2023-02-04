@@ -13,9 +13,9 @@ test('collectAssets', t => {
         soundAsset1,
         soundAsset2,
         costumeAsset1
-    ] = [{assetId: 1}, {assetId: 2}, {assetId: 3}];
-    sprite.sounds = [{id: 1, asset: soundAsset1}, {id: 2, asset: soundAsset2}];
-    sprite.costumes = [{id: 1, asset: costumeAsset1}];
+    ] = [{ assetId: 1 }, { assetId: 2 }, { assetId: 3 }];
+    sprite.sounds = [{ id: 1, asset: soundAsset1 }, { id: 2, asset: soundAsset2 }];
+    sprite.costumes = [{ id: 1, asset: costumeAsset1 }];
     const assets = vm.assets;
     t.type(assets.length, 'number');
     t.equal(assets.length, 3);

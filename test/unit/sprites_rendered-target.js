@@ -107,11 +107,11 @@ test('setCostume', t => {
 });
 
 test('deleteCostume', t => {
-    const o1 = {id: 1};
-    const o2 = {id: 2};
-    const o3 = {id: 3};
-    const o4 = {id: 4};
-    const o5 = {id: 5};
+    const o1 = { id: 1 };
+    const o2 = { id: 2 };
+    const o3 = { id: 3 };
+    const o4 = { id: 4 };
+    const o5 = { id: 5 };
 
     const r = new Runtime();
     const s = new Sprite(null, r);
@@ -212,9 +212,9 @@ test('deleteCostume', t => {
 });
 
 test('deleteSound', t => {
-    const o1 = {id: 1};
-    const o2 = {id: 2};
-    const o3 = {id: 3};
+    const o1 = { id: 1 };
+    const o2 = { id: 2 };
+    const o3 = { id: 3 };
 
     const r = new Runtime();
     const s = new Sprite(null, r);
@@ -385,7 +385,7 @@ test('#getCostumes returns the costumes', t => {
     const r = new Runtime();
     const spr = new Sprite(null, r);
     const a = new RenderedTarget(spr, r);
-    a.sprite.costumes = [{id: 1}, {id: 2}, {id: 3}];
+    a.sprite.costumes = [{ id: 1 }, { id: 2 }, { id: 3 }];
     t.equals(a.getCostumes().length, 3);
     t.equals(a.getCostumes()[0].id, 1);
     t.equals(a.getCostumes()[1].id, 2);
@@ -409,7 +409,7 @@ test('#toJSON returns the sounds and costumes', t => {
     const a = new RenderedTarget(spr, r);
     const sounds = [1, 2, 3];
     a.sprite.sounds = sounds;
-    a.sprite.costumes = [{id: 1}, {id: 2}, {id: 3}];
+    a.sprite.costumes = [{ id: 1 }, { id: 2 }, { id: 3 }];
     t.same(a.toJSON().sounds, sounds);
     t.same(a.toJSON().costumes, a.sprite.costumes);
     t.end();
@@ -419,9 +419,9 @@ test('#addSound does not duplicate names', t => {
     const r = new Runtime();
     const spr = new Sprite(null, r);
     const a = new RenderedTarget(spr, r);
-    a.sprite.sounds = [{name: 'first'}];
-    a.addSound({name: 'first'});
-    t.deepEqual(a.sprite.sounds, [{name: 'first'}, {name: 'first2'}]);
+    a.sprite.sounds = [{ name: 'first' }];
+    a.addSound({ name: 'first' });
+    t.deepEqual(a.sprite.sounds, [{ name: 'first' }, { name: 'first2' }]);
     t.end();
 });
 
@@ -429,8 +429,8 @@ test('#addCostume does not duplicate names', t => {
     const r = new Runtime();
     const spr = new Sprite(null, r);
     const a = new RenderedTarget(spr, r);
-    a.addCostume({name: 'first'});
-    a.addCostume({name: 'first'});
+    a.addCostume({ name: 'first' });
+    a.addCostume({ name: 'first' });
     t.equal(a.sprite.costumes.length, 2);
     t.equal(a.sprite.costumes[0].name, 'first');
     t.equal(a.sprite.costumes[1].name, 'first2');
@@ -441,11 +441,11 @@ test('#renameSound does not duplicate names', t => {
     const r = new Runtime();
     const spr = new Sprite(null, r);
     const a = new RenderedTarget(spr, r);
-    a.sprite.sounds = [{name: 'first'}, {name: 'second'}];
+    a.sprite.sounds = [{ name: 'first' }, { name: 'second' }];
     a.renameSound(0, 'first'); // Shouldn't increment the name, noop
-    t.deepEqual(a.sprite.sounds, [{name: 'first'}, {name: 'second'}]);
+    t.deepEqual(a.sprite.sounds, [{ name: 'first' }, { name: 'second' }]);
     a.renameSound(1, 'first');
-    t.deepEqual(a.sprite.sounds, [{name: 'first'}, {name: 'first2'}]);
+    t.deepEqual(a.sprite.sounds, [{ name: 'first' }, { name: 'first2' }]);
     t.end();
 });
 
@@ -453,7 +453,7 @@ test('#renameCostume does not duplicate names', t => {
     const r = new Runtime();
     const spr = new Sprite(null, r);
     const a = new RenderedTarget(spr, r);
-    a.sprite.costumes = [{name: 'first'}, {name: 'second'}];
+    a.sprite.costumes = [{ name: 'first' }, { name: 'second' }];
     a.renameCostume(0, 'first'); // Shouldn't increment the name, noop
     t.equal(a.sprite.costumes.length, 2);
     t.equal(a.sprite.costumes[0].name, 'first');
@@ -466,11 +466,11 @@ test('#renameCostume does not duplicate names', t => {
 });
 
 test('#reorderCostume', t => {
-    const o1 = {id: 0};
-    const o2 = {id: 1};
-    const o3 = {id: 2};
-    const o4 = {id: 3};
-    const o5 = {id: 4};
+    const o1 = { id: 0 };
+    const o2 = { id: 1 };
+    const o3 = { id: 2 };
+    const o4 = { id: 3 };
+    const o5 = { id: 4 };
     const r = new Runtime();
     const s = new Sprite(null, r);
     s.costumes = [o1, o2, o3, o4, o5];
@@ -520,11 +520,11 @@ test('#reorderCostume', t => {
 });
 
 test('#reorderSound', t => {
-    const o1 = {id: 0, name: 'name0'};
-    const o2 = {id: 1, name: 'name1'};
-    const o3 = {id: 2, name: 'name2'};
-    const o4 = {id: 3, name: 'name3'};
-    const o5 = {id: 4, name: 'name4'};
+    const o1 = { id: 0, name: 'name0' };
+    const o2 = { id: 1, name: 'name1' };
+    const o3 = { id: 2, name: 'name2' };
+    const o4 = { id: 3, name: 'name3' };
+    const o5 = { id: 4, name: 'name4' };
     const r = new Runtime();
     const s = new Sprite(null, r);
     s.sounds = [o1, o2, o3, o4, o5];

@@ -44,7 +44,6 @@ test('offline-custom-assets', t => {
         vm.setCompatibilityMode(false);
         vm.setTurboMode(false);
         vm.loadProject(project).then(() => {
-
             // Verify initial state
             t.equals(vm.runtime.targets.length, 2);
             const costumes = vm.runtime.targets[1].getCostumes();
@@ -73,5 +72,4 @@ test('offline-custom-assets', t => {
             }, 2000);
         });
     });
-
 });

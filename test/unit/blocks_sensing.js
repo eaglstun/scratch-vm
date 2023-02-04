@@ -15,7 +15,7 @@ test('getPrimitives', t => {
 test('ask and answer with a hidden target', t => {
     const rt = new Runtime();
     const s = new Sensing(rt);
-    const util = {target: {visible: false}};
+    const util = { target: { visible: false } };
 
     const expectedQuestion = 'a question';
     const expectedAnswer = 'the answer';
@@ -28,7 +28,7 @@ test('ask and answer with a hidden target', t => {
     });
 
     // (1) Emit the question.
-    const promise = s.askAndWait({QUESTION: expectedQuestion}, util);
+    const promise = s.askAndWait({ QUESTION: expectedQuestion }, util);
 
     // (3) Ask block resolves after the answer is emitted.
     promise.then(() => {
@@ -40,7 +40,7 @@ test('ask and answer with a hidden target', t => {
 test('ask and stop all dismisses question', t => {
     const rt = new Runtime();
     const s = new Sensing(rt);
-    const util = {target: {visible: false}};
+    const util = { target: { visible: false } };
 
     const expectedQuestion = 'a question';
 
@@ -59,7 +59,7 @@ test('ask and stop all dismisses question', t => {
     });
 
     // (1) Emit the question.
-    s.askAndWait({QUESTION: expectedQuestion}, util);
+    s.askAndWait({ QUESTION: expectedQuestion }, util);
     // (3) Emit the stop all event.
     rt.stopAll();
 });
@@ -67,7 +67,7 @@ test('ask and stop all dismisses question', t => {
 test('ask and stop other scripts dismisses if it is the last question', t => {
     const rt = new Runtime();
     const s = new Sensing(rt);
-    const util = {target: {visible: false, sprite: {}, getCustomState: () => ({})}, thread: {}};
+    const util = { target: { visible: false, sprite: {}, getCustomState: () => ({}) }, thread: {} };
 
     const expectedQuestion = 'a question';
 
@@ -86,7 +86,7 @@ test('ask and stop other scripts dismisses if it is the last question', t => {
     });
 
     // (1) Emit the questions.
-    s.askAndWait({QUESTION: expectedQuestion}, util);
+    s.askAndWait({ QUESTION: expectedQuestion }, util);
     // (3) Emit the stop for target event.
     rt.stopForTarget(util.target, util.thread);
 });
@@ -94,8 +94,8 @@ test('ask and stop other scripts dismisses if it is the last question', t => {
 test('ask and stop other scripts asks next question', t => {
     const rt = new Runtime();
     const s = new Sensing(rt);
-    const util = {target: {visible: false, sprite: {}, getCustomState: () => ({})}, thread: {}};
-    const util2 = {target: {visible: false, sprite: {}, getCustomState: () => ({})}, thread: {}};
+    const util = { target: { visible: false, sprite: {}, getCustomState: () => ({}) }, thread: {} };
+    const util2 = { target: { visible: false, sprite: {}, getCustomState: () => ({}) }, thread: {} };
 
     const expectedQuestion = 'a question';
     const nextQuestion = 'a followup';
@@ -115,8 +115,8 @@ test('ask and stop other scripts asks next question', t => {
     });
 
     // (1) Emit the questions.
-    s.askAndWait({QUESTION: expectedQuestion}, util);
-    s.askAndWait({QUESTION: nextQuestion}, util2);
+    s.askAndWait({ QUESTION: expectedQuestion }, util);
+    s.askAndWait({ QUESTION: nextQuestion }, util2);
     // (3) Emit the stop for target event.
     rt.stopForTarget(util.target, util.thread);
 });
@@ -124,7 +124,7 @@ test('ask and stop other scripts asks next question', t => {
 test('ask and answer with a visible target', t => {
     const rt = new Runtime();
     const s = new Sensing(rt);
-    const util = {target: {visible: true}};
+    const util = { target: { visible: true } };
 
     const expectedQuestion = 'a question';
     const expectedAnswer = 'the answer';
@@ -150,17 +150,17 @@ test('ask and answer with a visible target', t => {
         rt.emit('ANSWER', expectedAnswer);
     });
 
-    s.askAndWait({QUESTION: expectedQuestion}, util);
+    s.askAndWait({ QUESTION: expectedQuestion }, util);
 });
 
 test('answer gets reset when runtime is disposed', t => {
     const rt = new Runtime();
     const s = new Sensing(rt);
-    const util = {target: {visible: false}};
+    const util = { target: { visible: false } };
     const expectedAnswer = 'the answer';
 
     rt.addListener('QUESTION', () => rt.emit('ANSWER', expectedAnswer));
-    const promise = s.askAndWait({QUESTION: ''}, util);
+    const promise = s.askAndWait({ QUESTION: '' }, util);
 
     promise.then(() => t.strictEqual(s.getAnswer(), expectedAnswer))
         .then(() => rt.dispose())
@@ -177,10 +177,10 @@ test('set drag mode', t => {
     const s = new Sprite(null, runtime);
     const rt = new RenderedTarget(s, runtime);
 
-    sensing.setDragMode({DRAG_MODE: 'not draggable'}, {target: rt});
+    sensing.setDragMode({ DRAG_MODE: 'not draggable' }, { target: rt });
     t.strictEqual(rt.draggable, false);
 
-    sensing.setDragMode({DRAG_MODE: 'draggable'}, {target: rt});
+    sensing.setDragMode({ DRAG_MODE: 'draggable' }, { target: rt });
     t.strictEqual(rt.draggable, true);
 
     t.end();
@@ -198,7 +198,7 @@ test('get loudness with caching', t => {
     const firstLoudness = 1;
     const secondLoudness = 2;
     let simulatedLoudness = firstLoudness;
-    rt.audioEngine = {getLoudness: () => simulatedLoudness};
+    rt.audioEngine = { getLoudness: () => simulatedLoudness };
 
     // It should report -1 when current step time is null.
     t.strictEqual(sensing.getLoudness(), -1);
@@ -215,7 +215,7 @@ test('get loudness with caching', t => {
     // Simulate time passing by advancing the timer forward a little bit.
     // After less than a step, it should still report cached loudness.
     let simulatedTime = Date.now() + (rt.currentStepTime / 2);
-    sensing._timer = {time: () => simulatedTime};
+    sensing._timer = { time: () => simulatedTime };
     t.strictEqual(sensing.getLoudness(), firstLoudness);
 
     // Simulate more than a step passing. It should now request the value
@@ -259,7 +259,7 @@ test('get attribute of sprite variable', t => {
     // Add variable to set the map (it should be empty before this).
     target.variables.anId = variable;
     rt.getSpriteTargetByName = () => target;
-    t.equal(sensing.getAttributeOf({PROPERTY: 'cars'}), 'trucks');
+    t.equal(sensing.getAttributeOf({ PROPERTY: 'cars' }), 'trucks');
 
     t.end();
 });
@@ -269,7 +269,7 @@ test('get attribute of variable that does not exist', t => {
     const s = new Sprite(null, rt);
     const target = new RenderedTarget(s, rt);
     rt.getTargetForStage = () => target;
-    t.equal(sensing.getAttributeOf({PROPERTY: 'variableThatDoesNotExist'}), 0);
+    t.equal(sensing.getAttributeOf({ PROPERTY: 'variableThatDoesNotExist' }), 0);
 
     t.end();
 });

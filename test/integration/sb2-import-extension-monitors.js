@@ -2,7 +2,7 @@ const path = require('path');
 const tap = require('tap');
 const test = tap.test;
 const makeTestStorage = require('../fixtures/make-test-storage');
-const {readFileToBuffer, extractProjectJson} = require('../fixtures/readProjectFile');
+const { readFileToBuffer, extractProjectJson } = require('../fixtures/readProjectFile');
 const VirtualMachine = require('../../src/index');
 const sb2 = require('../../src/serialization/sb2');
 

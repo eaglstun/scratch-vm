@@ -19,7 +19,7 @@ test('default', t => {
 
     // Create runtime instance & load SB2 into it
     const rt = new Runtime();
-    sb2.deserialize(json, rt).then(({targets}) => {
+    sb2.deserialize(json, rt).then(({ targets }) => {
         // Test
         t.type(json, 'object');
         t.type(rt, 'object');
@@ -57,7 +57,7 @@ test('data scoping', t => {
 
     // Create runtime instance & load SB2 into it
     const rt = new Runtime();
-    sb2.deserialize(json, rt).then(({targets}) => {
+    sb2.deserialize(json, rt).then(({ targets }) => {
         const globalVariableIds = Object.keys(targets[0].variables);
         const localVariableIds = Object.keys(targets[1].variables);
         t.equal(targets[0].variables[globalVariableIds[0]].name, 'foo');
@@ -73,7 +73,7 @@ test('whenclicked blocks imported separately', t => {
 
     // Create runtime instance & load SB2 into it
     const rt = new Runtime();
-    sb2.deserialize(json, rt).then(({targets}) => {
+    sb2.deserialize(json, rt).then(({ targets }) => {
         const stage = targets[0];
         t.equal(stage.isStage, true); // Make sure we have the correct target
         const stageOpcode = stage.blocks.getBlock(stage.blocks.getScripts()[0]).opcode;
@@ -94,7 +94,7 @@ test('Ordering', t => {
     const uri = path.resolve(__dirname, '../fixtures/ordering.sb2');
     const json = extractProjectJson(uri);
     const rt = new Runtime();
-    sb2.deserialize(json, rt).then(({targets}) => {
+    sb2.deserialize(json, rt).then(({ targets }) => {
         // Would fail with any other ordering.
         t.equal(targets[1].sprite.name, 'First');
         t.equal(targets[2].sprite.name, 'Second');

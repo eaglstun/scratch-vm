@@ -187,6 +187,7 @@ const loadBitmap_ = function (costume, runtime, _rotationCenter) {
     return fetchBitmapCanvas_(costume, runtime, _rotationCenter)
         .then(fetched => {
             const updateCostumeAsset = function (dataURI) {
+                console.log('dataURI', dataURI);
                 if (!runtime.v2BitmapAdapter) {
                     // TODO: This might be a bad practice since the returned
                     // promise isn't acted on. If this is something we should be

@@ -28,7 +28,7 @@ test('serialize', t => {
 
 test('deserialize', t => {
     const vm = new VirtualMachine();
-    sb3.deserialize('', vm.runtime).then(({targets}) => {
+    sb3.deserialize('', vm.runtime).then(({ targets }) => {
         // @todo Analyze
         t.type(targets, 'object');
         t.end();
@@ -190,7 +190,7 @@ test('serializing and deserializing sb3 preserves sprite layer order', t => {
         .then(serializedObject =>
             sb3.deserialize(
                 JSON.parse(JSON.stringify(serializedObject)), new Runtime(), null, false)
-                .then(({targets}) => {
+                .then(({ targets }) => {
                     // First check that the sprites are ordered correctly (as they would
                     // appear in the target pane)
                     t.equal(targets[0].sprite.name, 'Stage');

@@ -20,7 +20,7 @@ test('nested default/*', t => {
     // Create runtime instance & load SB2 into it
     const rt = new runtime();
     rt.attachStorage(makeTestStorage());
-    sb2.deserialize(json, rt).then(({targets}) => {
+    sb2.deserialize(json, rt).then(({ targets }) => {
         // Test
         t.type(json, 'object');
         t.type(rt, 'object');
