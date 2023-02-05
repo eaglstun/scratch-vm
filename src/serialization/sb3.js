@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 /**
  * @fileoverview
  * An SB3 serializer and deserializer. Parses provided

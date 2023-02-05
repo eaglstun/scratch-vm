@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 const dispatch = require('../dispatch/central-dispatch');
 const log = require('../util/log');
 const maybeFormatMessage = require('../util/maybe-format-message');
@@ -26,11 +27,15 @@ const builtinExtensions = {
     // boost: () => require('../extensions/scratch3_boost'),
     // gdxfor: () => require('../extensions/scratch3_gdx_for'),
 
-    //
-    newextension: () => require('../extensions/newextension'),
+    // //
+    // developer: () => require('../extensions/developer'),
+    // gamepad: () => require('../extensions/gamepad')
+    developer: () => require('../extensions/scratch-x-developer'),
+    gamepad: () => require('../extensions/scratch-x-gamepad')
+    // newextension: () => require('../extensions/newextension'),
 
-     //
-     react: () => require('../extensions/react'),
+    //  //
+    //  react: () => require('../extensions/react'),
 };
 
 /**

@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 const MathUtil = require('../util/math-util');
 const StringUtil = require('../util/string-util');
 const Cast = require('../util/cast');
